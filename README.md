@@ -1,5 +1,5 @@
-# Scrublet
-**S**ingle-**C**ell **R**emover of Do**ublet**s  
+# Scrubleta
+**S**ingle-**C**ell **R**emover of Do**ublet**s with **A**ctual doublets  
   
 Python code for identifying doublets in single-cell RNA-seq data. For details and validation of the method, see our paper in [Cell Systems](https://www.sciencedirect.com/science/article/pii/S2405471218304745) or the preprint on [bioRxiv](https://www.biorxiv.org/content/early/2018/07/09/357368).
 
