@@ -6,13 +6,13 @@ Python code for identifying doublets in single-cell RNA-seq data. For details an
 #### Quick start:
 For a typical workflow, including interpretation of predicted doublet scores, see the example [notebook](./examples/scrublet_basics.ipynb).  
   
-Given a raw (unnormalized) UMI counts matrix `counts_matrix` with cells as rows and genes as columns, calculate a doublet score for each cell: 
+Given a raw (unnormalized) UMI counts matrix `counts_matrix` with cells as rows and genes as columns, and a UMI counts matrix from cell hashing doublets, `multiplet_matrix`, calculate a doublet score for each cell: 
 ```python
 import scrublet as scr
-scrub = scr.Scrublet(counts_matrix)
+scrub = scr.Scrublet(counts_matrix, multiplet_matrix)
 doublet_scores, predicted_doublets = scrub.scrub_doublets()
 ```
-`scr.scrub_doublets()` simulates doublets from the observed data and uses a k-nearest-neighbor classifier to calculate a continuous `doublet_score` (between 0 and 1) for each transcriptome. The score is automatically thresholded to generate `predicted_doublets`, a boolean array that is `True` for predicted doublets and `False` otherwise. 
+`scr.scrub_doublets()` uses observed doublets and a k-nearest-neighbor classifier to calculate a continuous `doublet_score` (between 0 and 1) for each transcriptome. The score is automatically thresholded to generate `predicted_doublets`, a boolean array that is `True` for predicted doublets and `False` otherwise. 
 
 #### Best practices:  
 - When working with data from multiple samples, run Scrublet on each sample separately. Because Scrublet is designed to detect technical doublets formed by the random co-encapsulation of two cells, it may perform poorly on merged datasets where the cell type proportions are not representative of any single sample. 
